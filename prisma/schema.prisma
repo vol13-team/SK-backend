@@ -14,8 +14,8 @@ model User {
   UserID      Int      @id @unique
   UserName    String
   UserIcon    String
-  created_at  DateTime
-  Update_at   DateTime
+  created_at  DateTime @default(now())
+  Update_at   DateTime @updatedAt
 
   // Relationships
   organisations  Organisation[]
@@ -32,8 +32,8 @@ model Issue {
   Visibility    Boolean
   PostUserID    Int
   explanation   String
-  created_at    DateTime
-  Update_at     DateTime
+  created_at    DateTime @default(now())
+  Update_at     DateTime @updatedAt
   OrganisationID Int
   OptionID      Int
 
