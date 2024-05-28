@@ -1,23 +1,27 @@
 import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
-export class CreateArticleDto {
-  @IsNotEmpty()
-  @IsNumber()
-  article_id: number;
-
-  @IsNotEmpty()
-  @IsString()
-  article_title: string;
-
-  @IsNotEmpty()
-  @IsString()
-  article_link: string;
-
-  @IsNotEmpty()
-  @IsString()
-  article_user_name: string;
-
+export class CreateGroupDto {
   @IsNotEmpty()
   @IsNumber()
   organisation_id: number;
+
+  @IsNotEmpty()
+  @IsString()
+  organisation_name: string;
+
+  @IsNotEmpty()
+  @IsString()
+  discruption: string;
+
+  @IsNotEmpty()
+  @IsString()
+  authority: string;
+
+  @IsNotEmpty()
+  @IsNumber()
+  user_id: number;
+
+  @IsNotEmpty()
+  @IsNumber()
+  article_id: number[];
 }

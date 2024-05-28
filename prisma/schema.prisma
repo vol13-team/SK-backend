@@ -11,8 +11,8 @@ datasource db {
 
 // User table
 model User {
-  UserID      Int      @id @unique
-  UserName    String
+  UserID      Int      @id @unique @default(autoincrement())
+  UserName    String   @unique
   UserIcon    String
   created_at  DateTime @default(now())
   Update_at   DateTime @updatedAt
@@ -21,12 +21,13 @@ model User {
   organisations  Organisation[]
   userTags      UserTag[]
   answers       Answer[]
-  issue Issue[]
+  issue         Issue[]
+  articles      Article[] @relation("UserArticles")
 }
 
 // Issue table
 model Issue {
-  IssueID       Int      @id @unique
+  IssueID       Int      @id @unique @default(autoincrement())
   IssueName     String
   IsuueDetail   String
   Visibility    Boolean
@@ -38,16 +39,16 @@ model Issue {
   OptionID      Int
 
   // Relationships
-  postUser   User       @relation(fields: [PostUserID], references: [UserID])
-  organisation Organisation @relation(fields: [OrganisationID], references: [OrganisationID])
-  options    Option[]
-  answers    Answer[]
-  issueTags  IssueTag[]
+  postUser       User         @relation(fields: [PostUserID], references: [UserID])
+  organisation   Organisation @relation(fields: [OrganisationID], references: [OrganisationID])
+  options        Option[]
+  answers        Answer[]
+  issueTags      IssueTag[]
 }
 
 // Option table
 model Option {
-  OptionID       Int      @id @unique
+  OptionID       Int      @id @unique @default(autoincrement())
   Option1        String
   Option2        String
   Option3        String
@@ -55,89 +56,91 @@ model Option {
   CorrectOption  Int
 
   // Relationships
-  issue      Issue    @relation(fields: [OptionID], references: [IssueID])
+  issue          Issue    @relation(fields: [OptionID], references: [IssueID])
 }
 
 // Article table
 model Article {
-  ArticleID        Int      @id @unique
+  ArticleID        Int      @id @unique @default(autoincrement())
   ArticleTitle     String
   ArticleLink      String
   ArticleUserName  String
+  OrganisationID   Int
 
   // Relationships
-  organisation Organisation? @relation(fields: [ArticleID], references: [OrganisationID])
-  articleTags ArticleTag[]
+  user             User      @relation("UserArticles", fields: [ArticleUserName], references: [UserName])
+  organisation     Organisation? @relation("OrganisationArticles",fields: [ArticleID], references: [OrganisationID])
+  articleTags      ArticleTag[]
 }
 
 // Answer table
 model Answer {
-  AnswerID       Int      @id @unique
+  AnswerID       Int      @id @unique @default(autoincrement())
   Decision       Boolean
   IssueID        Int
   AnserUserID    Int
   selectOptionID Int
 
   // Relationships
-  answerUser User @relation(fields: [AnserUserID], references: [UserID])
-  issue      Issue @relation(fields: [IssueID], references: [IssueID])
+  answerUser     User       @relation(fields: [AnserUserID], references: [UserID])
+  issue          Issue      @relation(fields: [IssueID], references: [IssueID])
 }
 
 // Organisation table
 model Organisation {
-  OrganisationID Int      @id @unique
+  OrganisationID Int      @id @unique @default(autoincrement())
   OrganisationName String
   discruption    String
   authority      String
   UserID         Int
-  ArticleID      Int
+  ArticleID      Int[]
 
   // Relationships
-  user      User       @relation(fields: [UserID], references: [UserID])
-  articles  Article[]
-  issues    Issue[]
+  user           User        @relation(fields: [UserID], references: [UserID])
+  articles       Article[]   @relation("OrganisationArticles")
+  issues         Issue[]
 }
 
 // Tag table
 model Tag {
-  TagID    Int      @id @unique
-  tagName  String
+  TagID          Int      @id @unique @default(autoincrement())
+  tagName        String
 
   // Relationships
-  userTags    UserTag[]
-  articleTags ArticleTag[]
-  issueTags   IssueTag[]
+  userTags       UserTag[]
+  articleTags    ArticleTag[]
+  issueTags      IssueTag[]
 }
 
 // UserTag table
 model UserTag {
-  UserTagID Int      @id @unique
-  UserID    Int
-  TagID     Int
+  UserTagID      Int      @id @unique @default(autoincrement())
+  UserID         Int
+  TagID          Int
 
   // Relationships
-  user User @relation(fields: [UserID], references: [UserID])
-  tag  Tag  @relation(fields: [TagID], references: [TagID])
+  user           User       @relation(fields: [UserID], references: [UserID])
+  tag            Tag        @relation(fields: [TagID], references: [TagID])
 }
 
 // ArticleTag table
 model ArticleTag {
-  ArticleTagID Int      @id @unique
-  ArticleID    Int
-  TagID        Int
+  ArticleTagID   Int      @id @unique @default(autoincrement())
+  ArticleID      Int
+  TagID          Int
 
   // Relationships
-  article Article @relation(fields: [ArticleID], references: [ArticleID])
-  tag     Tag     @relation(fields: [TagID], references: [TagID])
+  article        Article    @relation(fields: [ArticleID], references: [ArticleID])
+  tag            Tag        @relation(fields: [TagID], references: [TagID])
 }
 
 // IssueTag table
 model IssueTag {
-  IssueTagID Int      @id @unique
-  IssueID    Int
-  TagID      Int
+  IssueTagID     Int      @id @unique @default(autoincrement())
+  IssueID        Int
+  TagID          Int
 
   // Relationships
-  issue Issue @relation(fields: [IssueID], references: [IssueID])
-  tag   Tag   @relation(fields: [TagID], references: [TagID])
+  issue          Issue      @relation(fields: [IssueID], references: [IssueID])
+  tag            Tag        @relation(fields: [TagID], references: [TagID])
 }

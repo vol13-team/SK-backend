@@ -20,8 +20,8 @@ export class ArticleController {
     return this.articleService.getArticleAll();
   }
 
-  @Get()
-  getArticleId(@Param('id') articleId: string) {
+  @Get(':id')
+  getArticleId(@Param('id') articleId: number) {
     return this.articleService.getArticleId(articleId);
   }
 
@@ -31,12 +31,12 @@ export class ArticleController {
   }
 
   @Patch(':id')
-  editArticle(@Param('id') articleId: string, @Body() dto: EditArticleDto) {
+  editArticle(@Param('id') articleId: number, @Body() dto: EditArticleDto) {
     return this.articleService.editArticle(articleId, dto);
   }
 
   @Delete(':id')
-  deleteArticle(@Param('id') articleId: string) {
+  deleteArticle(@Param('id') articleId: number) {
     return this.articleService.deleteArticle(articleId);
   }
 }

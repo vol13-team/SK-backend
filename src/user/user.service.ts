@@ -10,17 +10,18 @@ export class UserService {
   async createUser(dto: CreateUserDto) {
     return await this.prisma.user.create({
       data: {
-        user_name: dto.user_name,
-        email: dto.email,
+        UserID: dto.user_id,
+        UserName: dto.user_name,
+        UserIcon: dto.user_icon,
       },
     });
   }
 
-  async getUserById(userId: string) {
+  async getUserById(userId: number) {
     try {
       const user = await this.prisma.user.findUnique({
         where: {
-          user_id: userId,
+          UserID: userId,
         },
       });
       console.log(user);
@@ -31,10 +32,10 @@ export class UserService {
     }
   }
 
-  async editUser(userId: string, dto: EditUserDto) {
+  async editUser(userId: number, dto: EditUserDto) {
     const user = await this.prisma.user.update({
       where: {
-        user_id: userId,
+        UserID: userId,
       },
       data: {
         ...dto,
@@ -47,10 +48,10 @@ export class UserService {
     return user;
   }
 
-  async deleteUser(userId: string) {
+  async deleteUser(userId: number) {
     const user = await this.prisma.user.delete({
       where: {
-        user_id: userId,
+        UserID: userId,
       },
     });
 
