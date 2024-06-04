@@ -19,7 +19,7 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Get('me')
-  getUser(@Param('id') userId: string) {
+  getUser(@Param('id') userId: number) {
     return this.userService.getUserById(userId);
   }
 
@@ -29,12 +29,12 @@ export class UserController {
   }
 
   @Patch(':id')
-  edituser(@Param('id') userId: string, @Body() dto: EditUserDto) {
+  edituser(@Param('id') userId: number, @Body() dto: EditUserDto) {
     return this.userService.editUser(userId, dto);
   }
 
   @Delete(':id')
-  deleteUser(@Param('id') userId: string) {
+  deleteUser(@Param('id') userId: number) {
     return this.userService.deleteUser(userId);
   }
 }

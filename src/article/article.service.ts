@@ -8,11 +8,20 @@ export class ArticleService {
   constructor(private prisma: PrismaService) {}
 
   async createArticle(dto: CreateArticleDto) {
+    const {
+      article_id,
+      article_title,
+      article_link,
+      article_user_name,
+      organisation_id,
+    } = dto;
     return await this.prisma.article.create({
       data: {
-        article_title: dto.article_title,
-        article_link: dto.article_link,
-        article_user_name: dto.article_user_name,
+        ArticleTitle: article_title,
+        ArticleLink: article_link,
+        ArticleUserName: article_user_name,
+        ArticleID: article_id,
+        OrganisationID: organisation_id,
       },
     });
   }
@@ -21,11 +30,12 @@ export class ArticleService {
     return this.prisma.article.findMany();
   }
 
-  async getArticleId(articleId: string) {
+  async getArticleId(articleId: any) {
     try {
+      const article_id = parseInt(articleId);
       const article = await this.prisma.article.findFirst({
         where: {
-          article_id: articleId,
+          ArticleID: article_id,
         },
       });
       console.log(article);
@@ -36,13 +46,15 @@ export class ArticleService {
     }
   }
 
-  async editArticle(articleId: string, dto: EditArticleDto) {
+  async editArticle(articleId: any, dto: EditArticleDto) {
     const article = await this.prisma.article.update({
       where: {
-        article_id: articleId,
+        ArticleID: parseInt(articleId),
       },
       data: {
-        ...dto,
+        ArticleTitle: dto.ArticleTitle,
+        ArticleLink: dto.ArticleLink,
+        OrganisationID: dto.OrganisationID,
       },
     });
     if (!article) {
@@ -52,10 +64,10 @@ export class ArticleService {
     return article;
   }
 
-  async deleteArticle(articleId: string) {
+  async deleteArticle(articleId: any) {
     const article = await this.prisma.article.delete({
       where: {
-        article_id: articleId,
+        ArticleID: parseInt(articleId),
       },
     });
 

@@ -1,16 +1,24 @@
 import { Optional } from '@nestjs/common';
-import { IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class EditArticleDto {
-  @IsString()
+  @IsNumber()
   @Optional()
-  article_title: string;
+  ArticleID: number;
 
   @IsString()
   @Optional()
-  article_link: string;
+  ArticleTitle: string;
 
   @IsString()
   @Optional()
-  article_user_name: string;
+  ArticleLink: string;
+
+  @IsString()
+  @Optional()
+  ArticleUserName: string;
+
+  @IsNumber()
+  @Optional()
+  OrganisationID: number;
 }

@@ -20,8 +20,12 @@ export class PrismaService extends PrismaClient {
       this.issue.deleteMany(),
       this.article.deleteMany(),
       this.answer.deleteMany(),
-      this.qiitaArticle.deleteMany(),
-      this.qiitaTag.deleteMany(),
+      this.organisation.deleteMany(),
+      this.userTag.deleteMany(),
+      this.option.deleteMany(),
+      this.tag.deleteMany(),
+      this.issueTag.deleteMany(),
+      this.articleTag.deleteMany(),
     ]);
   }
 }
