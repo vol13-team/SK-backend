@@ -22,10 +22,10 @@ export class IssueService {
       data: {
         IssueID: issue_id,
         IssueName: issue_name,
-        IsuueDetail: issue_detail,
+        IssueDetail: issue_detail,
         Visibility: visibility,
         PostUserID: post_user_id,
-        explanation: explanation,
+        Explanation: explanation,
         OrganisationID: organisation_id,
         OptionID: option_id,
       },

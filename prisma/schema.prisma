@@ -9,7 +9,7 @@ datasource db {
   url = env("DATABASE_URL")
 }
 
-// User table
+// User table 済
 model User {
   UserID      Int      @id @unique @default(autoincrement())
   UserName    String   @unique
@@ -25,18 +25,18 @@ model User {
   articles      Article[] @relation("UserArticles")
 }
 
-// Issue table
+// issue Table 済
 model Issue {
-  IssueID       Int      @id @unique @default(autoincrement())
-  IssueName     String
-  IsuueDetail   String
-  Visibility    Boolean
-  PostUserID    Int
-  explanation   String
-  created_at    DateTime @default(now())
-  Update_at     DateTime @updatedAt
+  IssueID        Int        @id @unique @default(autoincrement())
+  IssueName      String
+  IssueDetail    String
+  Visibility     Boolean
+  PostUserID     Int
+  Explanation    String
+  CreatedAt      DateTime   @default(now())
+  UpdatedAt      DateTime   @updatedAt
   OrganisationID Int
-  OptionID      Int
+  OptionID       Int
 
   // Relationships
   postUser       User         @relation(fields: [PostUserID], references: [UserID])
@@ -46,7 +46,7 @@ model Issue {
   issueTags      IssueTag[]
 }
 
-// Option table
+// option Table 済
 model Option {
   OptionID       Int      @id @unique @default(autoincrement())
   Option1        String
@@ -54,12 +54,13 @@ model Option {
   Option3        String
   Option4        String
   CorrectOption  Int
+  IssueID       Int
 
   // Relationships
-  issue          Issue    @relation(fields: [OptionID], references: [IssueID])
+  issue          Issue    @relation(fields: [IssueID], references: [IssueID])
 }
 
-// Article table
+// Article table 済
 model Article {
   ArticleID        Int      @id @unique @default(autoincrement())
   ArticleTitle     String
@@ -86,7 +87,7 @@ model Answer {
   issue          Issue      @relation(fields: [IssueID], references: [IssueID])
 }
 
-// Organisation table
+// Organisation table 済
 model Organisation {
   OrganisationID Int      @id @unique @default(autoincrement())
   OrganisationName String

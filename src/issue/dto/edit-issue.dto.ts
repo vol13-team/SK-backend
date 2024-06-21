@@ -3,17 +3,17 @@ import { IsBoolean, IsOptional, IsString } from 'class-validator';
 export class EditIssueDto {
   @IsString()
   @IsOptional()
-  issue_name: string;
+  IssueName: string;
 
   @IsString()
   @IsOptional()
-  issue_detail: string;
+  IssueDetail: string;
 
   @IsBoolean()
   @IsOptional()
-  visibility: boolean;
+  Visibility: boolean;
 
   @IsString()
   @IsOptional()
-  explanation: string;
+  Explanation: string;
 }
