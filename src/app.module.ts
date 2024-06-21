@@ -7,6 +7,7 @@ import { UserModule } from './user/user.module';
 import { ArticleModule } from './article/article.module';
 import { GroupModule } from './group/group.module';
 import { IssueModule } from './issue/issue.module';
+import { OptionModule } from './option/option.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { IssueModule } from './issue/issue.module';
     ArticleModule,
     GroupModule,
     IssueModule,
+    OptionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
