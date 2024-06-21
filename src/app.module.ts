@@ -9,6 +9,7 @@ import { GroupModule } from './group/group.module';
 import { IssueModule } from './issue/issue.module';
 import { OptionModule } from './option/option.module';
 import { AnswerModule } from './answer/answer.module';
+import { TagModule } from './tag/tag.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { AnswerModule } from './answer/answer.module';
     IssueModule,
     OptionModule,
     AnswerModule,
+    TagModule,
   ],
   controllers: [AppController],
   providers: [AppService],
