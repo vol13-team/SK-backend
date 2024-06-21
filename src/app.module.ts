@@ -8,6 +8,7 @@ import { ArticleModule } from './article/article.module';
 import { GroupModule } from './group/group.module';
 import { IssueModule } from './issue/issue.module';
 import { OptionModule } from './option/option.module';
+import { AnswerModule } from './answer/answer.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { OptionModule } from './option/option.module';
     GroupModule,
     IssueModule,
     OptionModule,
+    AnswerModule,
   ],
   controllers: [AppController],
   providers: [AppService],

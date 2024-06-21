@@ -74,7 +74,7 @@ model Article {
   articleTags      ArticleTag[]
 }
 
-// Answer table
+// Answer table 済
 model Answer {
   AnswerID       Int      @id @unique @default(autoincrement())
   Decision       Boolean
