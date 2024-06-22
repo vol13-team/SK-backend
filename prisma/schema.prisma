@@ -102,7 +102,7 @@ model Organisation {
   issues         Issue[]
 }
 
-// Tag table
+// Tag table 済
 model Tag {
   TagID          Int      @id @unique @default(autoincrement())
   tagName        String
@@ -113,7 +113,7 @@ model Tag {
   issueTags      IssueTag[]
 }
 
-// UserTag table
+// UserTag table 済
 model UserTag {
   UserTagID      Int      @id @unique @default(autoincrement())
   UserID         Int
