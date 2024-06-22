@@ -124,7 +124,7 @@ model UserTag {
   tag            Tag        @relation(fields: [TagID], references: [TagID])
 }
 
-// ArticleTag table
+// ArticleTag table 済
 model ArticleTag {
   ArticleTagID   Int      @id @unique @default(autoincrement())
   ArticleID      Int
@@ -135,7 +135,7 @@ model ArticleTag {
   tag            Tag        @relation(fields: [TagID], references: [TagID])
 }
 
-// IssueTag table
+// IssueTag table 済
 model IssueTag {
   IssueTagID     Int      @id @unique @default(autoincrement())
   IssueID        Int
