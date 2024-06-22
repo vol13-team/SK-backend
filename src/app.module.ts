@@ -12,6 +12,7 @@ import { AnswerModule } from './answer/answer.module';
 import { TagModule } from './tag/tag.module';
 import { UserTagModule } from './userTag/usertag.module';
 import { ArticleTagModule } from './articleTag/articletag.module';
+import { IssueTagModule } from './issueTag/issuetag.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { ArticleTagModule } from './articleTag/articletag.module';
     TagModule,
     UserTagModule,
     ArticleTagModule,
+    IssueTagModule,
   ],
   controllers: [AppController],
   providers: [AppService],
