@@ -11,6 +11,7 @@ import { CreateIssueDto } from './dto/create-issue.dto';
 import { EditIssueDto } from './dto/edit-issue.dto';
 import { IssueService } from './issue.service';
 
+// url(articles/issue)
 @Controller('articles/issue')
 export class IssueController {
   constructor(private issueService: IssueService) {}

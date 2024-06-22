@@ -11,6 +11,7 @@ import { CreateGroupDto } from './dto/create-group.dto';
 import { EditGroupDto } from './dto/edit-group.dto';
 import { GroupService } from './group.service';
 
+// url(group)
 @Controller('group')
 export class GroupController {
   constructor(private groupService: GroupService) {}

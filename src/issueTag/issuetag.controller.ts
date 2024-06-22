@@ -11,6 +11,7 @@ import { IssueTagService } from './issuetag.service';
 import { CreateIssueTagDto } from './dto/create-issuetag.dto';
 import { EditIssueTagDto } from './dto/edit-issuetag.dto';
 
+// url(/issuetag)
 @Controller('issuetag')
 export class IssueTagController {
   constructor(private issueTagService: IssueTagService) {}

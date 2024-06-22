@@ -11,6 +11,7 @@ import { ArticleTagService } from './articletag.service';
 import { CreateArticleTagDto } from './dto/create-articletag.dto';
 import { EditArticleTagDto } from './dto/edit-articletag.dto';
 
+// url(articletag)
 @Controller('articletag')
 export class ArticleTagController {
   constructor(private articleTagService: ArticleTagService) {}
