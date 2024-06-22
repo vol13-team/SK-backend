@@ -11,6 +11,7 @@ import { OptionModule } from './option/option.module';
 import { AnswerModule } from './answer/answer.module';
 import { TagModule } from './tag/tag.module';
 import { UserTagModule } from './userTag/usertag.module';
+import { ArticleTagModule } from './articleTag/articletag.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { UserTagModule } from './userTag/usertag.module';
     AnswerModule,
     TagModule,
     UserTagModule,
+    ArticleTagModule,
   ],
   controllers: [AppController],
   providers: [AppService],
